@@ -8,10 +8,8 @@
  * les 4 premiers pour la connexion
  * $monPdo de type PDO 
  * $monPdoGsb qui contiendra l'unique instance de la classe
- 
  * @package default
  * @author Cheri Bibi
- * @version    1.0
  * @link       http://www.php.net/manual/fr/book.pdo.php
  */
 
@@ -27,6 +25,7 @@ class PdoGsb{
  * pour toutes les mÃ©thodes de la classe
  */				
 	private function __construct(){
+        $unevar="ne sert a rien";
     	PdoGsb::$monPdo = new PDO(PdoGsb::$serveur.';'.PdoGsb::$bdd, PdoGsb::$user, PdoGsb::$mdp); 
 		PdoGsb::$monPdo->query("SET CHARACTER SET utf8");
 	}
@@ -48,7 +47,7 @@ class PdoGsb{
 	}
 /**
  * Retourne les visiteurs
- * @return un tableau contenant l'id, le nom et le prénom sous la forme d'un tableau associatif 
+ * @return un tableau contenant l'id, le nom et le prï¿½nom sous la forme d'un tableau associatif 
 */
 	public function getLesVisiteurs(){
 		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur ";
@@ -61,7 +60,7 @@ class PdoGsb{
  * Retourne les informations d'un visiteur
  
  * @param $idVisiteur 
- * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
+ * @return l'id, le nom et le prï¿½nom sous la forme d'un tableau associatif 
 */  
         public function getNomPrenomVisiteur($idVisiteur){
             $req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur 
@@ -76,7 +75,7 @@ class PdoGsb{
  
  * @param $login 
  * @param $mdp
- * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
+ * @return l'id, le nom et le prï¿½nom sous la forme d'un tableau associatif 
 */
 	public function getInfosVisiteur($login, $mdp){
 		$req = "select visiteur.id as id, visiteur.nom as nom, visiteur.prenom as prenom from visiteur 
@@ -281,7 +280,7 @@ class PdoGsb{
  * Retourne les mois pour lesquel un visiteur a une fiche de frais
  
  * @param $idVisiteur 
- * @return un tableau associatif de clé un mois -aaaamm- et de valeurs l'annÃ©e et le mois correspondant 
+ * @return un tableau associatif de clï¿½ un mois -aaaamm- et de valeurs l'annÃ©e et le mois correspondant 
 */
 	public function getLesMoisDisponibles($idVisiteur){
 		$req = "select fichefrais.mois as mois from  fichefrais 
@@ -369,8 +368,8 @@ class PdoGsb{
  * si la valeur est 'S' supprime cette ligne
  * si la valeur est 'R' modifie cette ligne
  * si la valeur est 'V' ne fait rien
- * càd ajoute un mois au champ 'mois'
- * @param $lesFraisHF, tableau contenant les valeurs 'S', 'R', ou 'V' pour une clé 'idFrais'
+ * cï¿½d ajoute un mois au champ 'mois'
+ * @param $lesFraisHF, tableau contenant les valeurs 'S', 'R', ou 'V' pour une clï¿½ 'idFrais'
  */
         public function miseAjourFraisHF($lesFraisHF){
             $lesCles = array_keys($lesFraisHF);

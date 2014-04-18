@@ -1,20 +1,23 @@
 <?php
-include("vues/comptable/v_sommaire_comptable.php");
+// est-ce que Ã§a change qqchose
+// 
+// include("vues/comptable/v_sommaire_comptable.php");
 $action = $_REQUEST['action'];
 $idComptable = $_SESSION['idVisiteur'];
+$idvar="Ã§a ne sert Ã  rien";
 if (isset($_REQUEST['lstVisiteur'])&& isset($_REQUEST['mois'])) {
      $visiteurASelectionner = $_REQUEST['lstVisiteur'];
      $moisASelectionner = $_REQUEST['mois'];
      $lesVisiteurs=$pdo->getLesVisiteurs();
      include("vues/comptable/v_listeVisiteurs.php");
-     
-     // au retour de la vue, on récupère les données
-     $visiteurASelectionner = $_REQUEST['lstVisiteur'];
+     // ici je rajoute un commmentaire
+     // au retour de la vue, on rï¿½cupï¿½re les donnï¿½es
+     $visiteurASelectionner = $_REQUEST['lstVisiteur'];     
      $moisASelectionner = $_REQUEST['mois'];
      $lesVisiteurs=$pdo->getLesVisiteurs();
      
      $leMois = substr($moisASelectionner,3,4).substr($moisASelectionner,0,2);
-     $leVisiteur = $pdo->getNomPrenomVisiteur($visiteurASelectionner); // faire un parcours de la collection $lesVisiteur préférable plutôt que accès pdo ?
+     $leVisiteur = $pdo->getNomPrenomVisiteur($visiteurASelectionner); // faire un parcours de la collection $lesVisiteur prï¿½fï¿½rable plutï¿½t que accï¿½s pdo ?
      $nom = $leVisiteur['nom'];
      $prenom = $leVisiteur['prenom'];
 }
@@ -23,7 +26,7 @@ switch($action){
     
         case 'selectionnerVisiteur':{
                 $lesVisiteurs=$pdo->getLesVisiteurs();
-                //La vue va afficher la liste déroulante des visiteurs.
+                //La vue va afficher la liste dï¿½roulante des visiteurs.
                 $lesCles = array_keys($lesVisiteurs);
                 $visiteurASelectionner  = $lesCles[0];
                 // lise des mois
